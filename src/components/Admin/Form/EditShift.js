@@ -176,7 +176,7 @@ const EditShift = ({ match }) => {
 
 		if (redirect) {
 			setFormState({ ...formState, showLoading: true });
-			location.href = '/auth/schedule';
+			location.href = '#/auth/schedule';
 		}
 	};
 
