@@ -1,0 +1,53 @@
+@import 'global';
+@import 'fonts';
+@import 'variables';
+
+.nav-container {
+	position: fixed;
+	width: 100%;
+	height: 2rem;
+	background-color: $main-graph;
+	top: 0;
+	box-shadow: 0 4px 3px -2px $shadow-color;
+	z-index: 2;
+}
+
+.main-nav {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+}
+
+.main-nav__list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 98%;
+	list-style: none;
+}
+
+.nav-list__home li {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.25rem;
+	color: white;
+}
+
+.main-nav__list a {
+	color: white;
+	text-decoration: none;
+	outline: none;
+}
+
+.main-nav__list a:hover {
+	cursor: unset;
+}
+
+.nav-list__logout {
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.nav-list__logout:hover {
+	cursor: pointer;
+	color: $soft-blue;
+}

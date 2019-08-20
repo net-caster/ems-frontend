@@ -1,0 +1,130 @@
+@import 'global';
+@import 'fonts';
+@import 'variables';
+@import 'mixins';
+
+.month-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.month-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	top: 5%;
+}
+
+.btn-form__inline {
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1em;
+	text-align: center;
+	width: 100%;
+	height: 4rem;
+	background-color: $main-graph;
+	border-radius: 10px 10px 0 0;
+}
+
+.btn-previous,
+.btn-next,
+.toggle-months__btn {
+	font-size: 3rem;
+}
+
+.btn-months,
+.btn-years {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: $head-text;
+	font-size: 1.5rem;
+	width: 10rem;
+}
+
+.btn-next:hover {
+	border-top-right-radius: 10px;
+}
+
+.btn-previous:hover {
+	border-top-left-radius: 10px;
+}
+
+.btn-error,
+.btn-cancel {
+	padding: 1rem 0;
+	background-color: #327aff;
+	border-radius: 10px;
+}
+
+.table {
+	box-shadow: $bottom-shadow;
+	background-color: ghostwhite;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom: 10px solid $main-graph;
+}
+
+.calendar-content td {
+	width: 6rem;
+	height: 6rem;
+	padding: 2px;
+	border-radius: 50%;
+}
+
+.day-block {
+	border: 2px solid transparent;
+	text-align: center;
+	font-size: 1.25rem;
+	font-family: $digits;
+}
+
+.table th,
+.full-calendar__table th {
+	color: white;
+	height: 3rem;
+	width: 6rem;
+	padding: 0;
+	background-color: #32323b;
+	border: 0;
+	box-shadow: 0 0 0 2px #32323b;
+	font-family: $days;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+}
+
+tr {
+	margin: 0;
+	padding: 0;
+}
+
+.curr-day {
+	color: $hot-pink;
+	border-radius: 50%;
+	border: 2px solid $hot-pink;
+}
+
+.day-text {
+	font-weight: bold;
+	text-align: center;
+}
+
+.error-msg {
+	font-family: $error-text;
+	font-size: 1.25rem;
+	text-align: center;
+}
+
+.toggle-months__btn {
+	display: flex;
+	justify-content: center;
+	width: 20rem;
+}
+
+.toggle-months__btn span {
+	color: white;
+}

@@ -1,0 +1,8 @@
+node_modules
+dist
+webpack.dev.js
+webpack.prod.js
+Command_To_Run.txt
+contexts/DateContext.js
+contexts/PageContext.js
+contexts/ShiftContext.js

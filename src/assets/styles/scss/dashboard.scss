@@ -1,0 +1,73 @@
+@import 'global';
+@import 'fonts';
+@import 'variables';
+
+.dashboard-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+}
+
+.nav {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	height: 100%;
+	background-color: $main-graph;
+	z-index: 1;
+}
+
+.nav-list {
+	position: relative;
+	top: 3em;
+	height: 90%;
+}
+
+.curr-link {
+	background-color: $soft-blue;
+}
+
+.nav__link {
+	position: relative;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.25rem;
+	width: 12rem;
+	height: 3rem;
+	list-style: none;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-decoration: none;
+	outline: none;
+}
+
+.nav__logout {
+	position: absolute;
+	bottom: 0;
+}
+
+.nav__link:hover {
+	background-color: $soft-blue;
+}
+
+.nav__link span {
+	position: relative;
+	left: 15px;
+	color: white;
+	font-weight: unset;
+}
+
+.welcome-title {
+	font-family: 'Oxygen', sans-serif;
+	color: $date-color;
+}
+
+.welcome-text {
+	font-family: 'Uubntu', sans-serif;
+	color: $main-graph;
+	margin-top: 2rem;
+	text-align: center;
+}

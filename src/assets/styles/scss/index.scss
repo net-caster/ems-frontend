@@ -1,0 +1,25 @@
+@import 'global';
+@import 'variables';
+@import 'fonts';
+@import 'animations';
+@import 'mixins';
+
+.home-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	background-image: url('../../images/ems_home_bg.jpg');
+	background-size: cover;
+}
+
+.not-found__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.not-found__text {
+	font-family: 'Ubuntu', sans-serif;
+}
