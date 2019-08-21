@@ -3,6 +3,7 @@
 ### React components for the EMS project hosted on Netlify
 
 In this app the user can sign up as an employer and manage their employees.
+
 They can add new employees, edit their information or delete them.
 
 They can assign shifts for their employees and also edit or delete existing
