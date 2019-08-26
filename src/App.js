@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, HashRouter, Redirect, r } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, HashRouter, Redirect } from 'react-router-dom';
 
 import './assets/styles/scss/index.scss';
 import './assets/styles/scss/form.scss';
