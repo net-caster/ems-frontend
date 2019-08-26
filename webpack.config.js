@@ -10,7 +10,7 @@ module.exports = {
 	mode: 'development',
 	entry: {
 		app: './src/index.js',
-		vender: VENDOR_LIBS
+		vendor: VENDOR_LIBS
 	},
 	devtool: 'inline-source-map',
 	devServer: {
