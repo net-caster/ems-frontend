@@ -44,7 +44,7 @@ export const ScheduleProvider = (props) => {
 					(dates) => dates.m === schStates.month && dates.y === schStates.year
 				),
 				filteredWeek: schStates.dateRange.filter(
-					(dates) => dates.w === schStates.week && dates.y === schStates.year
+					(dates) => dates.w === schStates.week && dates.wy === schStates.year
 				),
 				filteredDay: schStates.dateRange.filter(
 					(dates) => dates.d === schStates.day && dates.m === schStates.month && dates.y === schStates.year

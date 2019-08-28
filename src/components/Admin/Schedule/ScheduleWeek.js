@@ -58,15 +58,19 @@ const ScheduleWeek = () => {
 	};
 
 	const currWeek = () => {
-		setSchStates({ ...schStates, week: Dates.week });
+		setSchStates({ ...schStates, week: Dates.week, year: Dates.year });
 	};
 
 	const nextWeek = () => {
-		setSchStates({ ...schStates, week: schStates.week + 1 });
+		schStates.week === 52
+			? setSchStates({ ...schStates, week: 1, year: schStates.year + 1 })
+			: setSchStates({ ...schStates, week: schStates.week + 1 });
 	};
 
 	const previousWeek = () => {
-		setSchStates({ ...schStates, week: schStates.week - 1 });
+		schStates.week === 1
+			? setSchStates({ ...schStates, week: 52, year: schStates.year - 1 })
+			: setSchStates({ ...schStates, week: schStates.week - 1 });
 	};
 
 	const renderedWeek = schStates.filteredWeek.map((day) => {
