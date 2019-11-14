@@ -121,7 +121,6 @@ const EditShift = ({ match }) => {
         });
         setFormState({ ...formState, showLoading: false });
       }, 600);
-      console.log(data);
     } catch (err) {
       console.log(err);
     }

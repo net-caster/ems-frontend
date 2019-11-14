@@ -207,7 +207,9 @@ tr {
 }
 
 .shifts-modal__content--list {
-  top: 4.75rem;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(4.5rem);
   position: relative;
   height: 80%;
   overflow: scroll;
@@ -223,7 +225,7 @@ tr {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 12%;
+  top: 5.25rem;
   height: unset;
   width: unset;
   padding: 1rem 1rem;
@@ -243,8 +245,6 @@ tr {
   width: 1.5rem;
   height: 1.5rem;
   opacity: 0.25;
-  position: relative;
-  top: 3rem;
 }
 
 .shifts-modal__edit--icon:hover {
@@ -254,8 +254,6 @@ tr {
 .shifts-modal__block {
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: -2rem;
 }
 
 .shifts-modal__details {
@@ -277,11 +275,6 @@ tr {
   color: $main-graph;
   font-family: $digits;
   padding: 0 1rem;
-}
-
-.shifts-modal__block--info {
-  position: relative;
-  top: 3rem;
 }
 
 .add-shift__link {
