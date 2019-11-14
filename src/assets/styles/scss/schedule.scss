@@ -1,270 +1,250 @@
-@import 'global';
-@import 'variables';
-@import 'fonts';
-@import 'animations';
-@import 'mixins';
+@import "global";
+@import "variables";
+@import "fonts";
+@import "animations";
+@import "mixins";
 
 .schedule-container {
-	display: flex;
-	justify-content: flex-start;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	height: 90%;
-	position: absolute;
-	top: 5%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  top: 5%;
 }
 
 .schedule-calendar {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	flex-wrap: wrap;
-	width: 70%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 70%;
 }
 .schedule-header {
-	display: flex;
-	justify-content: space-between;
-	width: 30em;
+  display: flex;
+  justify-content: space-between;
+  width: 30em;
 }
 
 .schedule-calendar li {
-	list-style: none;
+  list-style: none;
 }
 
 .table-head__days {
-	display: flex;
-	background-color: $main-graph;
-	box-shadow: $bottom-shadow;
+  display: flex;
+  background-color: $main-graph;
+  box-shadow: $bottom-shadow;
 }
 
 .table-head__days li {
-	width: 150px;
-	padding: 2px 0;
-	text-align: center;
-	color: white;
-	font-family: $days;
-	font-size: 1.15rem;
+  width: 150px;
+  padding: 2px 0;
+  text-align: center;
+  color: white;
+  font-family: $days;
+  font-size: 1.15rem;
 }
 
 .schedule-header {
-	margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .schedule-header button {
-	@include jump-buttons;
+  @include jump-buttons;
 }
 
 .table-row {
-	display: flex;
+  display: flex;
 }
 
 .table-cell__block {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	align-items: flex-end;
-	padding: 0 10px 10px 0;
-	box-shadow: $bottom-shadow;
-	color: $date-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0 10px 10px 0;
+  box-shadow: $bottom-shadow;
+  color: $date-color;
 }
 
 .table-cell__block,
 .table-cell__empty {
-	width: 150px;
-	height: 110px;
-	font-family: $digits;
+  width: 150px;
+  height: 110px;
+  font-family: $digits;
 }
 
 .table-cell__today {
-	color: $hot-pink;
+  color: $hot-pink;
 }
 
 .curr-date__picker {
-	font-family: 'Open Sans', sans-serif;
-	color: $main-graph;
+  font-family: "Open Sans", sans-serif;
+  color: $main-graph;
 }
 
 .curr-date__picker:hover {
-	cursor: pointer;
-	color: $soft-blue;
+  cursor: pointer;
+  color: $soft-blue;
 }
 
 .week-schedule__container {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .week-container {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: 90vh;
-	overflow: scroll;
-	scrollbar-width: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 90vh;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 .week-schedule__buttons {
-	position: fixed;
-	display: flex;
-	justify-content: space-evenly;
-	left: 13%;
-	top: 10%;
-	width: 12em;
+  position: fixed;
+  display: flex;
+  justify-content: space-evenly;
+  left: 13%;
+  top: 10%;
+  width: 12em;
 }
 
 .week-schedule__buttons button {
-	@include jump-buttons;
+  @include jump-buttons;
 }
 
 .week-schedule__info {
-	position: fixed;
-	display: flex;
-	flex-direction: column;
-	left: 13%;
-	top: 20%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 13%;
+  top: 20%;
 }
 
 .week-schedule__info__cell {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	font-size: 1.25rem;
-	margin: 1rem 0;
-	height: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin: 1rem 0;
+  height: 2rem;
 }
 
 .schedule-info__cell__title {
-	font-family: 'Open Sans', sans-serif;
-	color: $main-graph;
-	margin-right: 1em;
+  font-family: "Open Sans", sans-serif;
+  color: $main-graph;
+  margin-right: 1em;
 }
 
 .schedule-info__cell__value {
-	font-family: 'Roboto', sans-serif;
-	color: $date-color;
+  font-family: "Roboto", sans-serif;
+  color: $date-color;
 }
 
 .week-container::-webkit-scrollbar {
-	width: 0;
+  width: 0;
 }
 
 .week-container__row {
-	list-style: none;
+  list-style: none;
+}
+
+.week-cell {
+  position: relative;
+  left: 5em;
+  width: 55rem;
+  display: flex;
+  justify-content: flex-start;
+  box-shadow: $bottom-shadow;
+  border: 1px solid rgba(73, 73, 73, 0.1);
+  color: $soft-blue;
+  padding: 2em 1em;
+  font-family: $digits;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .week-cell__block {
-	position: relative;
-	left: 5em;
-	width: 55em;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	align-items: flex-end;
-	box-shadow: $bottom-shadow;
-	border: 1px solid rgba(73, 73, 73, 0.1);
-	color: $date-color;
-	padding: 2em 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 10rem;
+  border-right: 1px solid gray;
 }
 
-.date-text {
-	font-family: $digits;
-	font-weight: bold;
+.week-cell__block--curr.week-cell__block--date,
+.week-cell__block--curr.week-cell__block--day {
+  color: $curr-day;
+  font-style: italic;
 }
 
-.day-text {
-	@include day-text;
+.week-cell__block--weekend.week-cell__block--date,
+.week-cell__block--weekend.week-cell__block--day {
+  color: $hot-pink;
 }
 
-.curr-day__text {
-	@include day-text;
-}
-.curr-date__text {
-	font-weight: bold;
-	font-family: $digits;
+.week-cell__block--date {
+  font-family: $head-text;
+  font-size: 1.5rem;
+  color: $main-graph;
 }
 
-.curr-day__text,
-.curr-date__text {
-	color: $hot-pink;
+.week-cell__block--day {
+  font-family: $digits;
+  text-transform: uppercase;
+}
+
+.week-cell__block--month {
+  font-family: $error-text;
+  color: $main-graph;
+  text-transform: uppercase;
 }
 
 .shift-cell {
-	display: flex;
-	width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 1rem;
 }
 
-.shift-cell__before,
-.shift-cell__after {
-	display: flex;
-	flex-direction: column;
-	width: 50%;
-	border-left: 1px solid rgba(0, 0, 0, 0.25);
-	padding: 0 0.5rem;
+.shift-cell__details {
+  display: flex;
+  padding-bottom: 1rem;
 }
 
-.after,
-.before {
-	display: flex;
-	width: 20em;
+.shift-cell__block--info {
+  padding: 0 1rem;
 }
 
-.before-name,
-.after-name,
-.before-hours,
-.after-hours {
-	margin: 0 1em;
-	width: 50%;
-}
-
-.shift-cell__title {
-	@include shift-date;
-	color: $soft-blue;
-}
-
-.shift-cell__title--current {
-	@include shift-date;
-	color: $hot-pink;
-}
-
-.shift-cell__before__info,
-.shift-cell__after__info {
-	margin-top: 0.5em;
-}
-
-.shift-title {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: bold;
-	color: $main-graph;
-	text-align: center;
-}
-
-.before-name,
-.after-name {
-	font-family: 'Roboto', sans-serif;
-}
-
-.before-hours,
-.after-hours {
-	font-family: $digits;
-	font-weight: bold;
+.shift-cell__block--time,
+.shift-cell__block--hours,
+.shift-cell__block--pay {
+  color: $main-graph;
+  border-right: 1px solid gray;
 }
 
 .shift-cell__edit--icon {
-	background-image: url('../../images/icons/edit-icon.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100%;
-	width: 1rem;
-	height: 1rem;
-	opacity: 0.5;
+  background-image: url("../../images/icons/edit-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0.5;
+  margin-left: 1rem;
 }
 
 .shift-cell__edit--icon:hover {
-	cursor: pointer;
-	opacity: 1;
+  cursor: pointer;
+  opacity: 1;
 }

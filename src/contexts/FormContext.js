@@ -1,20 +1,25 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext } from "react";
 
 export const FormContext = createContext();
 
-export const FormProvider = (props) => {
-	const [ formState, setFormState ] = useState({
-		showLogin: true,
-		showSignup: false,
-		showLoading: false,
-		showDeleteEmployee: false,
-		showEditEmployee: false,
-		showDeleteAccount: false,
-		showEditUser: false,
-		showAlertError: false,
-		showAlertSuccess: false,
-		showComponent: false
-	});
+export const FormProvider = props => {
+  const [formState, setFormState] = useState({
+    showLogin: true,
+    showSignup: false,
+    showLoading: false,
+    showDeleteEmployee: false,
+    showEditEmployee: false,
+    showDeleteAccount: false,
+    showEditUser: false,
+    showAlertError: false,
+    showAlertSuccess: false,
+    showComponent: false,
+    showShiftsModal: false
+  });
 
-	return <FormContext.Provider value={[ formState, setFormState ]}>{props.children}</FormContext.Provider>;
+  return (
+    <FormContext.Provider value={[formState, setFormState]}>
+      {props.children}
+    </FormContext.Provider>
+  );
 };

@@ -1,327 +1,367 @@
-@import 'global';
-@import 'variables';
-@import 'fonts';
-@import 'animations';
-@import 'mixins';
+@import "global";
+@import "variables";
+@import "fonts";
+@import "animations";
+@import "mixins";
 
 .add-shift__container {
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
 }
 
 .add-shift__form {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
 .add-shift__box {
-	position: relative;
-	top: 4em;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  position: relative;
+  top: 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .shift-employees__list {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .shift-employees__list input {
-	font-family: $error-text;
-	font-size: 1.25rem;
-	width: 300px;
-	margin-bottom: 1rem;
+  font-family: $error-text;
+  font-size: 1.25rem;
+  width: 300px;
+  margin-bottom: 1rem;
 }
 
 .time-date {
-	display: flex;
-	width: 36em;
-	justify-content: flex-end;
+  display: flex;
+  width: 36em;
+  justify-content: flex-end;
 }
 
 .time-box {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .time-box__start,
 .time-box__end {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .time-box__title {
-	position: relative;
-	text-transform: uppercase;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 1.25rem;
-	color: $main-graph;
+  position: relative;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.25rem;
+  color: $main-graph;
 }
 
-input[name=hour_start],
-input[name=minutes_start],
-input[name=hour_end],
-input[name=minutes_end] {
-	@include read-only-input;
-	border: 1px solid $main-graph;
+input[name="hour_start"],
+input[name="minutes_start"],
+input[name="hour_end"],
+input[name="minutes_end"] {
+  @include read-only-input;
+  border: 1px solid $main-graph;
 }
 
 .shift-hours__count,
 .shift-wage__count {
-	@include read-only-input;
-	box-shadow: $bottom-shadow;
-	border: unset;
-	height: 2rem;
-	width: 6rem;
+  @include read-only-input;
+  box-shadow: $bottom-shadow;
+  border: unset;
+  height: 2rem;
+  width: 6rem;
 }
 
 .invalid-inputs {
-	@include read-only-input;
-	border: 1px solid $hot-pink;
-	box-shadow: $bottom-shadow;
-	height: 2rem;
-	width: 6rem;
+  @include read-only-input;
+  border: 1px solid $hot-pink;
+  box-shadow: $bottom-shadow;
+  height: 2rem;
+  width: 6rem;
 }
 
 .time-box__inputs {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .time-box__hours--up,
 .time-box__hours--down,
 .time-box__minutes--up,
 .time-box__minutes--down {
-	font-size: 1.5rem;
-	font-family: $digits;
-	font-weight: bold;
-	background: none;
-	border: none;
-	outline: none;
-	text-align: center;
-	padding: 10px 20px;
-	&:hover {
-		cursor: pointer;
-		color: $hot-pink;
-	}
+  font-size: 1.5rem;
+  font-family: $digits;
+  font-weight: bold;
+  background: none;
+  border: none;
+  outline: none;
+  text-align: center;
+  padding: 10px 20px;
+  &:hover {
+    cursor: pointer;
+    color: $hot-pink;
+  }
 }
 
 .time-box__hours--down,
 .time-box__minutes--down {
-	transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .time-seperator {
-	font-size: 1.5rem;
-	font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .shift-info {
-	display: flex;
-	justify-content: space-evenly;
-	margin-top: 2rem;
-	width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .shift-hours {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .shift-hours__title,
 .shift-wage__title {
-	font-family: 'Ubuntu Condensed', sans-serif;
-	font-size: 1.5rem;
-	margin-bottom: 1rem;
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .date-box {
-	display: flex;
-	justify-content: flex-start;
-	flex-direction: column;
-	align-items: flex-start;
-	width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .date-box__picker {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .date-box__picker--controls {
-	display: flex;
-	width: 100%;
-	justify-content: space-evenly;
-	margin-top: 1rem;
-	height: 3rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  height: 3rem;
 }
 
 .date-box__select:hover {
-	cursor: pointer;
-	box-shadow: 0 0 4px 2px rgba(119, 139, 235, 0.5);
-	border: 1px solid $soft-blue;
+  cursor: pointer;
+  box-shadow: 0 0 4px 2px rgba(119, 139, 235, 0.5);
+  border: 1px solid $soft-blue;
 }
 
 .date-box__select.years {
-	@include date-selector;
-	width: 80px;
+  @include date-selector;
+  width: 80px;
 }
 
 .date-box__select.months {
-	@include date-selector;
-	width: 100px;
+  @include date-selector;
+  width: 100px;
 }
 
 .date-box__select.days {
-	@include date-selector;
-	width: 50px;
+  @include date-selector;
+  width: 50px;
 }
 
 .date-box__info {
-	position: relative;
-	left: 1em;
-	display: flex;
-	flex-direction: column;
+  position: relative;
+  left: 1em;
+  display: flex;
+  flex-direction: column;
 }
 
 .info-box__group {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .info-box__cells {
-	display: flex;
-	width: 10em;
-	margin: 1rem 0;
+  display: flex;
+  width: 12em;
+  margin: 1rem 0;
 }
 
 .info-cell {
-	width: 50%;
+  width: 50%;
 }
 
 .info-cell__prop {
-	font-family: $main-text;
-	color: $main-graph;
+  font-family: $main-text;
+  color: $main-graph;
 }
 
 .info-cell__value {
-	font-family: 'Uubntu', sans-serif;
-	color: $date-color;
-	font-weight: bold;
+  font-family: "Uubntu", sans-serif;
+  color: $date-color;
+  font-weight: bold;
 }
 
 .curr-date__btn,
 .prev-date__btn,
 .next-date__btn {
-	position: relative;
-	top: -1em;
-	color: $main-graph;
+  position: relative;
+  top: -1em;
+  color: $main-graph;
 }
 
 .prev-date__btn:hover,
 .next-date__btn:hover {
-	cursor: pointer;
-	color: $hot-pink;
-	text-shadow: 0 1px 3px $soft-blue;
+  cursor: pointer;
+  color: $hot-pink;
+  text-shadow: 0 1px 3px $soft-blue;
 }
 
 .curr-date__btn:hover {
-	cursor: pointer;
-	color: $soft-blue;
-	text-shadow: 0 1px 3px $soft-blue;
+  cursor: pointer;
+  color: $soft-blue;
+  text-shadow: 0 1px 3px $soft-blue;
 }
 
 .prev-date__btn::before {
-	content: "\21D0";
-	font-size: 2.5rem;
+  content: "\21D0";
+  font-size: 2.5rem;
 }
 
 .curr-date__btn::before {
-	content: '\21D4';
-	font-size: 2.5rem;
+  content: "\21D4";
+  font-size: 2.5rem;
 }
 
 .next-date__btn::before {
-	content: "\21D2";
-	font-size: 2.5rem;
+  content: "\21D2";
+  font-size: 2.5rem;
 }
 
 .form-submit__btn {
-	position: relative;
-	padding: 0.5rem 1.5rem;
-	background-color: white;
-	border: 1px solid $main-graph;
-	border-radius: 3px;
-	color: $main-graph;
-	font-family: $main-text;
-	font-size: 16px;
+  position: relative;
+  padding: 0.5rem 1.5rem;
+  background-color: white;
+  border: 1px solid $main-graph;
+  border-radius: 3px;
+  color: $main-graph;
+  font-family: $main-text;
+  font-size: 16px;
 }
 
 .add-shift__form--submit {
-	top: 6em;
+  top: 6em;
 }
 
 .form-submit__btn:hover {
-	cursor: pointer;
-	background-color: $main-graph;
-	color: white;
+  cursor: pointer;
+  background-color: $main-graph;
+  color: white;
 }
 
 .edit-shift__container {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .edit-shift__form__body {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .edit-shift__title {
-	position: relative;
-	font-family: 'Roboto', sans-serif;
-	font-size: 3rem;
-	color: $main-graph;
-	top: -1em;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  font-size: 3rem;
+  color: $main-graph;
+  top: -1em;
 }
 
 .edit-shift__form {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-btns {
-	position: relative;
-	top: 3em;
-	display: flex;
-	justify-content: space-evenly;
-	width: 100%;
-	font-family: 'Open Sans', sans-serif;
+  position: relative;
+  top: 3em;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
 }
 
 .shift-delete__btn:hover {
-	background-color: $danger-color;
-	border-color: $danger-color;
+  background-color: $danger-color;
+  border-color: $danger-color;
+}
+
+.break-deduction {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.break-deduction__text {
+  font-size: 1.25rem;
+  font-family: $error-text;
+}
+
+.break-deduction__selector {
+  @include date-selector;
+  width: 3.5rem;
+}
+
+.break-deduction__options {
+  display: flex;
+  width: 8rem;
+}
+
+.break-deduction__options--down,
+.break-deduction__options--up {
+  @include read-only-input;
+  margin-top: 1.5rem;
+}
+
+.break-deduction__options--down:hover,
+.break-deduction__options--up:hover {
+  cursor: pointer;
+  color: $hot-pink;
+}
+
+input[name="deduct"] {
+  @include read-only-input;
+  border: 1px solid $main-graph;
 }

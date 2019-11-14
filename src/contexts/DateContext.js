@@ -1,164 +1,256 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect } from "react";
+
+import useShifts from "../hooks/useShifts";
+import moment from "moment";
 
 export const DateContext = createContext();
 
-export const DateProvider = (props) => {
-	const today = new Date();
-	const currDay = today.getDate();
-	const currYear = today.getFullYear();
-	const currMonth = today.getMonth();
+export const DateProvider = props => {
+  const today = new Date();
+  const currDay = today.getDate();
+  const currYear = today.getFullYear();
+  const currMonth = today.getMonth();
+  const currWeek = moment().isoWeek();
 
-	Date.prototype.getWeekNumber = (year, month, day) => {
-		let d = new Date(Date.UTC(year, month, day));
-		let dayNum = d.getUTCDay() || 7;
-		d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-		let yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-		return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
-	};
+  const { shifts } = useShifts();
 
-	const [ dateStates, setDateStates ] = useState({
-		day: currDay,
-		year: currYear,
-		month: currMonth,
-		dayObject: {},
-		showMonth: true,
-		months: [
-			'January',
-			'February',
-			'March',
-			'April',
-			'May',
-			'June',
-			'July',
-			'August',
-			'September',
-			'October',
-			'November',
-			'December'
-		],
-		monthsOfYear: [ [], [], [], [], [], [], [], [], [], [], [], [] ],
-		daysOfWeek: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
-		showDateModal: false,
-		showMonthsModal: false,
-		showErrorModal: false
-	});
+  const [queries, setQueries] = useState({
+    year: null,
+    month: null,
+    day: null,
+    clicked: false
+  });
+  const [dateStates, setDateStates] = useState({
+    day: currDay,
+    year: currYear,
+    month: currMonth,
+    week: currWeek,
+    monthOfYear: [],
+    months: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    daysOfWeek: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+    daysInMonth: [],
+    queryYear: null,
+    queryMonth: null,
+    queryDay: null
+  });
 
-	let monthsOfYear = [];
+  const dependencies = [dateStates.month, dateStates.year, shifts];
 
-	/* const checkDateObj = (obj) => {
-		for (let key in obj) {
-			let content = obj[key];
-			if (content === null || content === NaN || content === undefined || content === '--') {
-				setStates({ ...states, showErrorModal: true, showMonth: false });
-			} else {
-				setStates({
-					...states,
-					showDateModal: true,
-					showMonth: false
-				});
-			}
-		}
-	};
+  useEffect(() => {
+    generateMonth();
+  }, dependencies);
 
-	const clickHandle = (e) => {
-		const dateId = e.target.id;
-		const year = dateId.slice(0, 4);
-		const month = dateId.slice(4, 6);
-		const day = dateId.slice(6);
+  const handleClick = event => {
+    const year = parseInt(event.currentTarget.getAttribute("data-year"));
+    const month = parseInt(event.currentTarget.getAttribute("data-month"));
+    const date = parseInt(event.currentTarget.getAttribute("data-date"));
 
-		const selectedDay = {
-			dateId: parseInt(dateId),
-			date: `${year}-${month}-${day}`,
-			year: parseInt(year),
-			month: parseInt(month),
-			day: parseInt(day),
-			week: new Date().getWeekNumber(year, month - 1, day),
-			weekDay: new Date(year, month - 1, day - 1).getDay() + 1,
-			quarter: Math.floor(((new Date(year, month, day).getMonth() + 11) / 3) % 4) + 1,
-			weekDayName: states.daysOfWeek[new Date(year, month - 1, day).getDay()],
-			monthName: states.months[month - 1]
-		};
+    setQueries({
+      ...queries,
+      year: year,
+      month: month,
+      day: date,
+      clicked: true
+    });
+  };
 
-		setStates((states.dayObject = selectedDay));
-		checkDateObj(states.dayObject);
+  const generateMonth = () => {
+    const firstDay = (year, month) => {
+      return new Date(year, month, 0).getDay();
+    };
 
-		console.log(states.dayObject);
+    const daysOfMonth = (year, month) => {
+      return 32 - new Date(year, month, 32).getDate();
+    };
 
-		return selectedDay;
-	}; */
+    let days = [];
+    let daysInMonth = [];
+    let weeks = [];
 
-	const generateYear = () => {
-		const firstDay = (year, month) => {
-			return new Date(year, month, 0).getDay();
-		};
+    let date = 1;
+    let int = 1;
 
-		const daysInMonth = (year, month) => {
-			return 32 - new Date(year, month, 32).getDate();
-		};
+    for (let i = 0; i < 6; i++) {
+      let cell = <td />;
+      for (let j = 0; j < 7; j++) {
+        if (i === 0 && j < firstDay(dateStates.year, dateStates.month)) {
+          cell = <td key={int++} className="empty-block" />;
+        } else if (date > daysOfMonth(dateStates.year, dateStates.month)) {
+          break;
+        } else {
+          const dateId = `${dateStates.year}${
+            dateStates.month + 1 < 10
+              ? "0" + (dateStates.month + 1)
+              : dateStates.month + 1
+          }${date < 10 ? "0" + date : date}`;
+          cell = (
+            <td key={dateId} id={dateId} className="day-block">
+              <button
+                data-year={dateStates.year}
+                data-month={dateStates.month}
+                data-date={date}
+                onClick={handleClick}
+              >
+                <div className="day-block__tags">
+                  {shifts.map(shift => {
+                    if (
+                      date === shift.day &&
+                      dateStates.month === shift.month &&
+                      dateStates.year === shift.year
+                    ) {
+                      return (
+                        <li key={int++} className="calendar-tag__name">
+                          &bull;
+                        </li>
+                      );
+                    }
+                  })}
+                </div>
+                <div className="day-block__dates">
+                  <span className="day-text">{date}</span>
+                  <span className="weekday-text">
+                    {
+                      dateStates.daysOfWeek[
+                        new Date(
+                          `${dateStates.year}-${dateStates.month + 1}-${date}`
+                        ).getDay()
+                      ]
+                    }
+                  </span>
+                </div>
+              </button>
+            </td>
+          );
+          daysInMonth.push(date);
+          if (
+            new Date(
+              `${dateStates.year}-${dateStates.month + 1}-${date}`
+            ).getDay() === 6 ||
+            new Date(
+              `${dateStates.year}-${dateStates.month + 1}-${date}`
+            ).getDay() === 0
+          ) {
+            cell = (
+              <td key={dateId} id={dateId} className="day-block">
+                <button
+                  data-year={dateStates.year}
+                  data-month={dateStates.month}
+                  data-date={date}
+                  onClick={handleClick}
+                >
+                  <div className="day-block__tags--weekend">
+                    {shifts.map(shift => {
+                      if (
+                        date === shift.day &&
+                        dateStates.month === shift.month &&
+                        dateStates.year === shift.year
+                      ) {
+                        return (
+                          <li key={int++} className="calendar-tag__name">
+                            &bull;
+                          </li>
+                        );
+                      }
+                    })}
+                  </div>
+                  <div className="day-block__dates--weekend">
+                    <span className="weekend-day__text">{date}</span>
+                    <span className="weekend-date__text">
+                      {
+                        dateStates.daysOfWeek[
+                          new Date(
+                            `${dateStates.year}-${dateStates.month + 1}-${date}`
+                          ).getDay()
+                        ]
+                      }
+                    </span>
+                  </div>
+                </button>
+              </td>
+            );
+          }
+          if (
+            date === currDay &&
+            dateStates.year === currYear &&
+            dateStates.month === currMonth
+          ) {
+            cell = (
+              <td key={dateId} id={dateId} className="day-block curr-day">
+                <button
+                  data-year={dateStates.year}
+                  data-month={dateStates.month}
+                  data-date={date}
+                  onClick={handleClick}
+                >
+                  <div className="day-block__tags--curr">
+                    {shifts.map(shift => {
+                      if (
+                        date === shift.day &&
+                        dateStates.month === shift.month &&
+                        dateStates.year === shift.year
+                      ) {
+                        return (
+                          <li key={int++} className="calendar-tag__name">
+                            &bull;
+                          </li>
+                        );
+                      }
+                    })}
+                  </div>
+                  <div className="day-block__dates--curr">
+                    <span className="day-text curr-day__block--text">
+                      {date}
+                    </span>
+                    <span className="curr-weekday__block--text">
+                      {
+                        dateStates.daysOfWeek[
+                          new Date(
+                            `${dateStates.year}-${dateStates.month + 1}-${date}`
+                          ).getDay()
+                        ]
+                      }
+                    </span>
+                  </div>
+                </button>
+              </td>
+            );
+          }
+          date++;
+        }
+        days.push(cell);
+      }
+    }
 
-		const generateDays = (year, month) => {
-			let days = [];
-			let weeks = [];
+    while (days.length > 0) {
+      weeks.push(days.slice(0, 7));
+      days = days.slice(7);
+    }
 
-			let date = 1;
-			let int = 1;
+    setDateStates({
+      ...dateStates,
+      monthOfYear: weeks,
+      daysInMonth: daysInMonth
+    });
+  };
 
-			for (let i = 0; i < 6; i++) {
-				let cell = <td />;
-				for (let j = 0; j < 7; j++) {
-					if (i === 0 && j < firstDay(year, month)) {
-						cell = <td key={int++} className="empty-block" />;
-					} else if (date > daysInMonth(year, month)) {
-						break;
-					} else {
-						const dateId = `${year}${month + 1 < 10 ? '0' + (month + 1) : month + 1}${date < 10
-							? '0' + date
-							: date}`;
-						cell = (
-							<td key={dateId} id={dateId} className="day-block">
-								<span className="day-text">{date}</span>
-							</td>
-						);
-						if (date === currDay && year === currYear && month === currMonth) {
-							cell = (
-								<td key={dateId} id={dateId} className="day-block curr-day">
-									<span className="day-text">{date}</span>
-								</td>
-							);
-						}
-						date++;
-					}
-					days.push(cell);
-				}
-			}
-
-			while (days.length > 0) {
-				weeks.push(days.slice(0, 7));
-				days = days.slice(7);
-			}
-			return weeks;
-		};
-
-		for (let x = 0; x < 12; x++) {
-			monthsOfYear.push(generateDays(dateStates.year, x));
-		}
-	};
-
-	const dependencies = [
-		dateStates.month,
-		dateStates.day,
-		dateStates.year,
-		dateStates.dayObject,
-		dateStates.showDateModal,
-		dateStates.showErrorModal,
-		dateStates.showMonth,
-		dateStates.showMonthsModal
-	];
-
-	useEffect(() => {
-		generateYear();
-		setDateStates({ ...dateStates, monthsOfYear: monthsOfYear });
-	}, dependencies);
-
-	return <DateContext.Provider value={[ dateStates, setDateStates ]}>{props.children}</DateContext.Provider>;
+  return (
+    <DateContext.Provider
+      value={[dateStates, setDateStates, queries, setQueries]}
+    >
+      {props.children}
+    </DateContext.Provider>
+  );
 };

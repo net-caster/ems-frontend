@@ -1,130 +1,300 @@
-@import 'global';
-@import 'fonts';
-@import 'variables';
-@import 'mixins';
+@import "global";
+@import "fonts";
+@import "variables";
+@import "mixins";
 
 .month-container {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
 }
 
 .month-card {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	top: 5%;
+  position: relative;
+  top: 5%;
+  left: 5%;
 }
 
 .btn-form__inline {
-	font-family: Arial, Helvetica, sans-serif;
-	display: flex;
-	justify-content: space-between;
-	margin-top: 1em;
-	text-align: center;
-	width: 100%;
-	height: 4rem;
-	background-color: $main-graph;
-	border-radius: 10px 10px 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5rem;
+  background-color: $main-graph;
+  border-radius: 10px 10px 0 0;
 }
 
 .btn-previous,
 .btn-next,
 .toggle-months__btn {
-	font-size: 3rem;
+  font-size: 2rem;
 }
 
 .btn-months,
 .btn-years {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: $head-text;
-	font-size: 1.5rem;
-	width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $head-text;
+  font-size: 1.5rem;
+  width: 10rem;
 }
 
 .btn-next:hover {
-	border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .btn-previous:hover {
-	border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .btn-error,
 .btn-cancel {
-	padding: 1rem 0;
-	background-color: #327aff;
-	border-radius: 10px;
+  padding: 1rem 0;
+  background-color: #327aff;
+  border-radius: 10px;
 }
 
 .table {
-	box-shadow: $bottom-shadow;
-	background-color: ghostwhite;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border-bottom: 10px solid $main-graph;
+  background: none;
 }
 
 .calendar-content td {
-	width: 6rem;
-	height: 6rem;
-	padding: 2px;
-	border-radius: 50%;
+  width: 10rem;
+  height: 6rem;
+  padding: 2px;
+}
+
+.day-block button {
+  width: 10rem;
+  height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.day-block button:hover {
+  cursor: pointer;
 }
 
 .day-block {
-	border: 2px solid transparent;
-	text-align: center;
-	font-size: 1.25rem;
-	font-family: $digits;
+  border: 2px solid transparent;
+  text-align: center;
+  box-shadow: $bottom-shadow;
+}
+
+.day-block:hover {
+  background-color: rgba(34, 185, 255, 0.15);
 }
 
 .table th,
 .full-calendar__table th {
-	color: white;
-	height: 3rem;
-	width: 6rem;
-	padding: 0;
-	background-color: #32323b;
-	border: 0;
-	box-shadow: 0 0 0 2px #32323b;
-	font-family: $days;
-	letter-spacing: .1rem;
-	text-transform: uppercase;
+  color: white;
+  height: 1.5rem;
+  width: 6rem;
+  padding: 0;
+  background-color: #32323b;
+  border: 0;
+  box-shadow: 0 0 0 2px #32323b;
+  font-family: $days;
+  letter-spacing: 0.1rem;
 }
 
 tr {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.curr-day {
-	color: $hot-pink;
-	border-radius: 50%;
-	border: 2px solid $hot-pink;
+.curr-day__block--text,
+.curr-weekday__block--text {
+  color: $curr-day;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.weekend-day__text {
+  color: $hot-pink;
+  font-size: 1.5rem;
+  font-family: $digits;
+}
+
+.weekend-date__text {
+  color: $hot-pink;
+  font-family: $digits;
+}
+
+.weekday-text {
+  color: $soft-blue;
 }
 
 .day-text {
-	font-weight: bold;
-	text-align: center;
+  font-size: 1.5rem;
+  font-family: $digits;
 }
 
 .error-msg {
-	font-family: $error-text;
-	font-size: 1.25rem;
-	text-align: center;
+  font-family: $error-text;
+  font-size: 1.25rem;
+  text-align: center;
 }
 
-.toggle-months__btn {
-	display: flex;
-	justify-content: center;
-	width: 20rem;
+.reset-date__btn {
+  display: flex;
+  justify-content: center;
+  width: 20rem;
 }
 
-.toggle-months__btn span {
-	color: white;
+.reset-date__btn span {
+  color: white;
+}
+
+.calendar-tag__name {
+  list-style: none;
+  font-family: $main-text;
+  padding: 0 0.25rem;
+  line-height: 0.85rem;
+}
+
+.day-block__tags,
+.day-block__tags--curr,
+.day-block__tags--weekend {
+  font-size: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 50%;
+  height: 6rem;
+  color: $shift-indicator;
+}
+
+.day-block__dates,
+.day-block__dates--curr,
+.day-block__dates--weekend {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  top: -1.5rem;
+}
+
+.shifts-modal__window {
+  top: 0;
+  @include backdrop-window;
+}
+
+.shifts-modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+  width: 25%;
+  box-shadow: $modal-shadow;
+  background-color: #fff;
+  border-radius: 5px;
+  animation: modalPopup 0.3s ease-out;
+}
+
+.shifts-modal__content--list {
+  top: 4.75rem;
+  position: relative;
+  height: 80%;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.shifts-modal__content--list::-webkit-scrollbar {
+  display: none;
+}
+
+.shifts-modal__btn--close {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 12%;
+  height: unset;
+  width: unset;
+  padding: 1rem 1rem;
+  background-color: $danger-color;
+  border-radius: 5px;
+  text-align: center;
+  &:hover {
+    background-color: $sub-text;
+  }
+}
+
+.shifts-modal__edit--icon {
+  background-image: url("../../images/icons/edit-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0.25;
+  position: relative;
+  top: 3rem;
+}
+
+.shifts-modal__edit--icon:hover {
+  opacity: 0.75;
+}
+
+.shifts-modal__block {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -2rem;
+}
+
+.shifts-modal__details {
+  display: flex;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.shifts-modal__block--name {
+  color: $soft-blue;
+  font-family: $main-text;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.shifts-modal__block--time,
+.shifts-modal__block--pay,
+.shifts-modal__block--hours {
+  color: $main-graph;
+  font-family: $digits;
+  padding: 0 1rem;
+}
+
+.shifts-modal__block--info {
+  position: relative;
+  top: 3rem;
+}
+
+.add-shift__link {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  margin-top: 2rem;
+  z-index: 2;
+}
+
+.add-shift__link--btn {
+  padding: 1rem 2rem;
+  background-color: $main-graph;
+  border-radius: 5px;
+  width: 9rem;
 }
